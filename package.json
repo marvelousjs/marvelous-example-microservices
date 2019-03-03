@@ -1,0 +1,27 @@
+{
+  "name": "marvelous-example",
+  "version": "1.0.0",
+  "description": "example using the marvelous framework",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "marvelous": "^0.1.7"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.18",
+    "jazzdb": "^0.6.4",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.1"
+  },
+  "scripts": {
+    "build": "mvs ; tsc",
+    "postinstall": "mvs",
+    "start:dev": "NODE_ENV=development node dist/src/app",
+    "start:local": "NODE_ENV=local node dist/src/app",
+    "start:prod": "NODE_ENV=production nohup nodemon dist/src/app -I &",
+    "start:test": "NODE_ENV=test node dist/src/app",
+    "test": "NODE_ENV=test mocha -r ts-node/register src/**/*.spec.ts"
+  }
+}

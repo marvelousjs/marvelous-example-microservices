@@ -1,0 +1,7 @@
+data/local/
+data/production/
+dist/
+node_modules/sendgrid.env
+sdk/
+src/server/configs/local.ts
+src/types/
