@@ -16,7 +16,7 @@
     "typescript": "^3.2.1"
   },
   "scripts": {
-    "build": "mvs ; tsc",
+    "build": "cd ./src/services/repo && mvs && cd ../user && mvs && cd ../../.. && tsc",
     "postinstall": "mvs",
     "start:dev": "NODE_ENV=development node dist/src/app",
     "start:local": "NODE_ENV=local node dist/src/app",

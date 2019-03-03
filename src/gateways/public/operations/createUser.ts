@@ -11,7 +11,7 @@ export class CreateUserOperation extends RestOperation {
     }
 
     const userRpcClient = new UserRpcClient({
-      url: 'http://localhost:3003'
+      url: 'http://localhost:3002'
     });
     const result = await userRpcClient.createUser({
       email: req.body.email,

@@ -1,54 +1,54 @@
 import * as assert from 'assert';
 import axios from 'axios';
 
-import { PublicRestServer } from '../apis/public/app';
-import { PrivateRestServer } from '../apis/private/app';
+import { PublicGateway } from '../gateways/public/app';
+import { PrivateGateway } from '../gateways/private/app';
 
-import { UserRpcServer } from '../services/user/app';
-import { RepoRpcServer } from '../services/repo/app';
+import { UserService } from '../services/user/app';
+import { RepoService } from '../services/repo/app';
 
 describe('server', () => {
-  // create api servers
-  const publicRestServer = new PublicRestServer({
+  // create services
+  const userService = new UserService({
     url: 'http://localhost:3001'
   });
-  const privateRestServer = new PrivateRestServer({
+  const repoService = new RepoService({
     url: 'http://localhost:3002'
   });
 
-  // create rpc servers
-  const userRpcServer = new UserRpcServer({
+  // create gateways
+  const privateGateway = new PrivateGateway({
     url: 'http://localhost:3003'
   });
-  const repoRpcServer = new RepoRpcServer({
+  const publicGateway = new PublicGateway({
     url: 'http://localhost:3004'
   });
-
+  
   before(async () => {
-    // start rest servers
-    await publicRestServer.start();
-    await privateRestServer.start();
+    // start services
+    await repoService.start();
+    await userService.start();
 
-    // start rpc servers
-    await userRpcServer.start();
-    await repoRpcServer.start();
+    // start gateways
+    await privateGateway.start();
+    await publicGateway.start();
   });
 
   after(async () => {
-    // stop rest servers
-    await publicRestServer.stop();
-    await privateRestServer.stop();
+    // stop gateways
+    await privateGateway.stop();
+    await publicGateway.stop();
 
-    // stop rpc servers
-    await userRpcServer.stop();
-    await repoRpcServer.stop();
+    // stop services
+    await repoService.stop();
+    await userService.stop();
   });
 
   it('should create user', async () => {
     // successful login
     const loginResult = await axios({
       method: 'POST',
-      url: 'http://localhost:3001/auth/login',
+      url: 'http://localhost:3004/auth/login',
       data: {
         email: 'test@test.com',
         password: 'password'
@@ -62,7 +62,7 @@ describe('server', () => {
     try {
       await axios({
         method: 'POST',
-        url: 'http://localhost:3001/users',
+        url: 'http://localhost:3004/users',
         data: {
           email: 'test@test.com',
           password: 'password'

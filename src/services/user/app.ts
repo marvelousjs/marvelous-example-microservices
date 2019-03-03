@@ -2,7 +2,7 @@ import { RpcServer } from 'marvelous';
 
 import { CreateUserAction } from './actions';
 
-export class UserRpcServer extends RpcServer {
+export class UserService extends RpcServer {
   actions = {
     createUser: CreateUserAction
   };

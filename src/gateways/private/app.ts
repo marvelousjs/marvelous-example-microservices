@@ -4,7 +4,7 @@ import { AuthError } from './errors';
 
 import { CreateUserOperation } from './operations';
 
-export class PrivateRestServer extends RestServer {
+export class PrivateGateway extends RestServer {
   knownErrors = [
     AuthError
   ];
