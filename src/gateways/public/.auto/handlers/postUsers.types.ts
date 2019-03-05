@@ -5,7 +5,7 @@
 
 import { loadGatewayHandler } from 'marvelous';
 
-import { ICreateRepoHandler } from '../types';
-import { CreateRepoOperation } from '../../operations';
+import { IPostUsersHandler } from '../types';
+import { PostUsersOperation } from '../../operations';
 
-export const createRepoHandler: ICreateRepoHandler = loadGatewayHandler(CreateRepoOperation);
+export const postUsersHandler: IPostUsersHandler = loadGatewayHandler(PostUsersOperation);

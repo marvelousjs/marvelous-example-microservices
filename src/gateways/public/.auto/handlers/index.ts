@@ -4,4 +4,4 @@
  */
 
 export * from './postAuthLogin.types';
-export * from './createRepo.types';
+export * from './postUsers.types';

@@ -12,7 +12,7 @@ interface IClientOpts {
 
 interface IClient {
   postAuthLogin: IClientPostAuthLoginFunction;
-  createRepo: IClientCreateRepoFunction;
+  postUsers: IClientPostUsersFunction;
 }
 
 export interface IClientPostAuthLoginFunction {
@@ -24,18 +24,17 @@ export interface IClientPostAuthLoginRequest {
 }
 
 export interface IClientPostAuthLoginResponse {
-  id: string;
 }
 
-export interface IClientCreateRepoFunction {
-  (request?: IClientCreateRepoRequest): Promise<IClientCreateRepoResponse>;
+export interface IClientPostUsersFunction {
+  (request?: IClientPostUsersRequest): Promise<IClientPostUsersResponse>;
 }
 
-export interface IClientCreateRepoRequest {
+export interface IClientPostUsersRequest {
   name: string;
 }
 
-export interface IClientCreateRepoResponse {
+export interface IClientPostUsersResponse {
   id: string;
 }
 
@@ -97,7 +96,7 @@ export class Client implements IClient {
     return handler(req, `${this.url}/postAuthLogin`);
   };
 
-  createRepo: IClientCreateRepoFunction = async req => {
-    return handler(req, `${this.url}/createRepo`);
+  postUsers: IClientPostUsersFunction = async req => {
+    return handler(req, `${this.url}/postUsers`);
   };
 }

@@ -9,6 +9,7 @@ export interface IPostAuthLoginHandler {
 
 export interface IPostAuthLoginRequest {
   body: IPostAuthLoginRequestBody;
+  session: any;
 }
 
 export interface IPostAuthLoginResponse {
@@ -20,6 +21,5 @@ export interface IPostAuthLoginRequestBody {
 }
 
 export interface IPostAuthLoginResponseBody {
-  id: string;
 }
 

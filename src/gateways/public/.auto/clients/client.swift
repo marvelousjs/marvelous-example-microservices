@@ -9,13 +9,12 @@ struct PostAuthLoginRequest: Codable {
     var name: String
 }
 struct PostAuthLoginResponse: Codable {
-    var id: String
 }
 
-struct CreateRepoRequest: Codable {
+struct PostUsersRequest: Codable {
     var name: String
 }
-struct CreateRepoResponse: Codable {
+struct PostUsersResponse: Codable {
     var id: String
 }
 
@@ -64,7 +63,7 @@ class Client: NSObject {
     func postAuthLogin(_ req: PostAuthLoginRequest) {
         return handler("postAuthLogin", req: req)
     }
-    func createRepo(_ req: CreateRepoRequest) {
-        return handler("createRepo", req: req)
+    func postUsers(_ req: PostUsersRequest) {
+        return handler("postUsers", req: req)
     }
 }

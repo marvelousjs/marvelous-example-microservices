@@ -20,7 +20,7 @@ const response = {
   }
 };
 
-export const CreateRepoSchema = {
+export const PostUsersSchema = {
   request,
   response
 };

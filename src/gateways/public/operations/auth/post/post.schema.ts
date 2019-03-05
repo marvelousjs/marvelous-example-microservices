@@ -12,12 +12,7 @@ const request = {
 const response = {
   type: 'object',
   additionalProperties: false,
-  properties: {
-    id: {
-      required: true,
-      type: 'string'
-    }
-  }
+  properties: {}
 };
 
 export const PostAuthLoginSchema = {

@@ -1,7 +1,10 @@
 import { GatewayOperation } from 'marvelous';
 
+import { IPostAuthLoginHandler } from '../../../.auto';
+import { PostAuthLoginSchema } from './post.schema';
+
 export class PostAuthLoginOperation extends GatewayOperation {
-  handler: any = async (req: any) => {
+  handler: IPostAuthLoginHandler = async (req) => {
     req.session.isLoggedIn = true;
 
     return {
@@ -9,4 +12,6 @@ export class PostAuthLoginOperation extends GatewayOperation {
       body: {}
     };
   };
+
+  schema = PostAuthLoginSchema;
 }

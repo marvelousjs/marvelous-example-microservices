@@ -3,9 +3,11 @@ import { GatewayOperation } from 'marvelous';
 import { Client as UserRpcClient } from '../../../../../services/user/.auto/clients/client';
 
 import { AuthError } from '../../../errors';
+import { PostUsersSchema } from '../../../../private/operations/users/post/post.schema';
+import { IPostUsersHandler } from '../../../.auto';
 
 export class PostUsersOperation extends GatewayOperation {
-  handler: any = async (req: any) => {
+  handler: IPostUsersHandler = async (req: any) => {
     if (req.session.isLoggedIn) {
       throw new AuthError('Guest allowed only');
     }
@@ -25,4 +27,6 @@ export class PostUsersOperation extends GatewayOperation {
       }
     };
   };
+
+  schemaa = PostUsersSchema;
 }
