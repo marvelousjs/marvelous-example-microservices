@@ -1,1 +1,1 @@
-export * from './createUser/createUser';
+export * from './createUser';

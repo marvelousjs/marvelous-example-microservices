@@ -1,7 +1,7 @@
 import { ServiceCall } from 'marvelous';
 
 import { ICreateRepoHandler } from '../../.auto'
-import { getData } from '../../data';
+import { getData } from '../../RepoData';
 import { CreateRepoSchema } from './createRepo.schema';
 
 export class CreateRepoCall extends ServiceCall {

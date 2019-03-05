@@ -5,10 +5,10 @@
 
 import Foundation
 
-struct PostUsersRequest: Codable {
+struct UsersRoutePostRequest: Codable {
     var name: String
 }
-struct PostUsersResponse: Codable {
+struct UsersRoutePostResponse: Codable {
     var id: String
 }
 
@@ -54,7 +54,7 @@ func handler(_ functionName: String, req: GetWeatherRequest) {
 }
 
 class Client: NSObject {
-    func postUsers(_ req: PostUsersRequest) {
-        return handler("postUsers", req: req)
+    func usersRoutePost(_ req: UsersRoutePostRequest) {
+        return handler("usersRoutePost", req: req)
     }
 }

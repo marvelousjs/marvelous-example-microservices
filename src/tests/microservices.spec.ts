@@ -1,11 +1,8 @@
 import * as assert from 'assert';
 import axios from 'axios';
 
-import { PublicGateway } from '../gateways/public/app';
-import { PrivateGateway } from '../gateways/private/app';
-
-import { UserService } from '../services/user/app';
-import { RepoService } from '../services/repo/app';
+import { PrivateGateway, PublicGateway } from '../gateways';
+import { RepoService, UserService } from '../services';
 
 describe('server', () => {
   // create services

@@ -1,17 +1,14 @@
-import { PrivateGateway } from './gateways/private/app';
-import { PublicGateway } from './gateways/public/app';
-
-import { RepoService } from './services/repo';
-import { UserService } from './services/user';
+import { PrivateGateway, PublicGateway } from './gateways';
+import { RepoService, UserService } from './services';
 
 import {
   initData as initRepoData,
   saveData as saveRepoData
-} from './services/repo/data';
+} from './services/repo/RepoData';
 import {
   initData as initUserData,
   saveData as saveUserData
-} from './services/user/data';
+} from './services/user/UserData';
 
 // create services
 export const repoService = new RepoService({

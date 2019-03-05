@@ -11,18 +11,18 @@ interface IClientOpts {
 }
 
 interface IClient {
-  postUsers: IClientPostUsersFunction;
+  usersRoutePost: IClientUsersRoutePostFunction;
 }
 
-export interface IClientPostUsersFunction {
-  (request?: IClientPostUsersRequest): Promise<IClientPostUsersResponse>;
+export interface IClientUsersRoutePostFunction {
+  (request?: IClientUsersRoutePostRequest): Promise<IClientUsersRoutePostResponse>;
 }
 
-export interface IClientPostUsersRequest {
+export interface IClientUsersRoutePostRequest {
   name: string;
 }
 
-export interface IClientPostUsersResponse {
+export interface IClientUsersRoutePostResponse {
   id: string;
 }
 
@@ -80,7 +80,7 @@ export class Client implements IClient {
     }
   }
 
-  postUsers: IClientPostUsersFunction = async req => {
-    return handler(req, `${this.url}/postUsers`);
+  usersRoutePost: IClientUsersRoutePostFunction = async req => {
+    return handler(req, `${this.url}/usersRoutePost`);
   };
 }

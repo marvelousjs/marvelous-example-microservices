@@ -1,7 +1,7 @@
 import { ServiceCall } from 'marvelous';
 
 import { ICreateUserHandler } from '../../.auto'
-import { getData } from '../../data';
+import { getData } from '../../UserData';
 import { CreateUserSchema } from './createUser.schema';
 
 export class CreateUserCall extends ServiceCall {

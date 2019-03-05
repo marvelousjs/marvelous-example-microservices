@@ -11,30 +11,32 @@ interface IClientOpts {
 }
 
 interface IClient {
-  postAuthLogin: IClientPostAuthLoginFunction;
-  postUsers: IClientPostUsersFunction;
+  authLoginRoutePost: IClientAuthLoginRoutePostFunction;
+  usersRoutePost: IClientUsersRoutePostFunction;
 }
 
-export interface IClientPostAuthLoginFunction {
-  (request?: IClientPostAuthLoginRequest): Promise<IClientPostAuthLoginResponse>;
+export interface IClientAuthLoginRoutePostFunction {
+  (request?: IClientAuthLoginRoutePostRequest): Promise<IClientAuthLoginRoutePostResponse>;
 }
 
-export interface IClientPostAuthLoginRequest {
-  name: string;
+export interface IClientAuthLoginRoutePostRequest {
+  email: string;
+  password: string;
 }
 
-export interface IClientPostAuthLoginResponse {
+export interface IClientAuthLoginRoutePostResponse {
 }
 
-export interface IClientPostUsersFunction {
-  (request?: IClientPostUsersRequest): Promise<IClientPostUsersResponse>;
+export interface IClientUsersRoutePostFunction {
+  (request?: IClientUsersRoutePostRequest): Promise<IClientUsersRoutePostResponse>;
 }
 
-export interface IClientPostUsersRequest {
-  name: string;
+export interface IClientUsersRoutePostRequest {
+  email: string;
+  password: string;
 }
 
-export interface IClientPostUsersResponse {
+export interface IClientUsersRoutePostResponse {
   id: string;
 }
 
@@ -92,11 +94,11 @@ export class Client implements IClient {
     }
   }
 
-  postAuthLogin: IClientPostAuthLoginFunction = async req => {
-    return handler(req, `${this.url}/postAuthLogin`);
+  authLoginRoutePost: IClientAuthLoginRoutePostFunction = async req => {
+    return handler(req, `${this.url}/authLoginRoutePost`);
   };
 
-  postUsers: IClientPostUsersFunction = async req => {
-    return handler(req, `${this.url}/postUsers`);
+  usersRoutePost: IClientUsersRoutePostFunction = async req => {
+    return handler(req, `${this.url}/usersRoutePost`);
   };
 }
