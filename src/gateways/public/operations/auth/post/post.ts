@@ -1,6 +1,6 @@
-import { RestOperation } from 'marvelous';
+import { GatewayOperation } from 'marvelous';
 
-export class LoginOperation extends RestOperation {
+export class PostAuthLoginOperation extends GatewayOperation {
   handler: any = async (req: any) => {
     req.session.isLoggedIn = true;
 

@@ -3,9 +3,9 @@
  * any manual changes to this file will be overwritten with the "mvs" command
  */
 
-import { loadServiceHandler } from 'marvelous';
+import { loadGatewayHandler } from 'marvelous';
 
-import { CreateRepoCall } from '../../calls';
 import { ICreateRepoHandler } from '../types';
+import { CreateRepoOperation } from '../../operations';
 
-export const createRepoHandler: ICreateRepoHandler = loadServiceHandler(CreateRepoCall);
+export const createRepoHandler: ICreateRepoHandler = loadGatewayHandler(CreateRepoOperation);

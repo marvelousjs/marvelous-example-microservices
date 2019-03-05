@@ -1,10 +1,10 @@
-import { RestOperation } from 'marvelous';
+import { GatewayOperation } from 'marvelous';
 
-import { Client as UserRpcClient } from '../../../services/user/.auto/clients/client';
+import { Client as UserRpcClient } from '../../../../../services/user/.auto/clients/client';
 
-import { AuthError } from '../errors';
+import { AuthError } from '../../../errors';
 
-export class CreateUserOperation extends RestOperation {
+export class PostUsersOperation extends GatewayOperation {
   handler: any = async (req: any) => {
     if (req.session.isLoggedIn) {
       throw new AuthError('Guest allowed only');

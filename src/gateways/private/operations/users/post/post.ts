@@ -1,10 +1,10 @@
 import { Request } from 'express';
-import { RestOperation } from 'marvelous';
+import { GatewayOperation } from 'marvelous';
 
 // from user service
-import { Client as UserRpcClient } from '../../../services/user/.auto/clients/client';
+import { Client as UserRpcClient } from '../../../../../services/user/.auto/clients/client';
 
-export class CreateUserOperation extends RestOperation {
+export class PostUsersOperation extends GatewayOperation {
   handler: any = async (req: Request) => {
     const userRpcClient = new UserRpcClient();
     await userRpcClient.createUser({

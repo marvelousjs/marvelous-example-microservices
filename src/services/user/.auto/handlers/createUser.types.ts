@@ -3,9 +3,9 @@
  * any manual changes to this file will be overwritten with the "mvs" command
  */
 
-import { loadHandler } from 'marvelous';
+import { loadServiceHandler } from 'marvelous';
 
-import { CreateUserAction } from '../../actions';
+import { CreateUserCall } from '../../calls';
 import { ICreateUserHandler } from '../types';
 
-export const createUserHandler: ICreateUserHandler = loadHandler(CreateUserAction);
+export const createUserHandler: ICreateUserHandler = loadServiceHandler(CreateUserCall);

@@ -1,16 +1,18 @@
-import { RestServer } from 'marvelous';
+import { Gateway } from 'marvelous';
 
 import { AuthError } from './errors';
 
-import { CreateUserOperation } from './operations';
+import { PostUsersOperation } from './operations';
 
-export class PrivateGateway extends RestServer {
+export class PrivateGateway extends Gateway {
   knownErrors = [
     AuthError
   ];
   paths = {
     '/users': {
-      post: CreateUserOperation
+      post: {
+        operation: PostUsersOperation
+      }
     }
   };
 }

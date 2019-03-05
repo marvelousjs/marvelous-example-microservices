@@ -4,7 +4,7 @@
   "description": "example using the marvelous framework",
   "dependencies": {
     "axios": "^0.18.0",
-    "marvelous": "^0.1.7"
+    "marvelous": "^0.5.3"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",
@@ -16,12 +16,13 @@
     "typescript": "^3.2.1"
   },
   "scripts": {
-    "build": "cd ./src/services/repo && mvs && cd ../user && mvs && cd ../../.. && tsc",
+    "build:dev": "NODE_ENV=development mvs && tsc",
+    "build:prod": "NODE_ENV=production mvs && tsc",
     "postinstall": "mvs",
-    "start:dev": "NODE_ENV=development node dist/src/app",
-    "start:local": "NODE_ENV=local node dist/src/app",
-    "start:prod": "NODE_ENV=production nohup nodemon dist/src/app -I &",
-    "start:test": "NODE_ENV=test node dist/src/app",
+    "start:dev": "NODE_ENV=development node dist/app",
+    "start:local": "NODE_ENV=local node dist/app",
+    "start:prod": "NODE_ENV=production nohup nodemon dist/app -I &",
+    "start:test": "NODE_ENV=test node dist/app",
     "test": "NODE_ENV=test mocha -r ts-node/register src/**/*.spec.ts"
   }
 }
