@@ -3,5 +3,5 @@
  * any manual changes to this file will be overwritten with the "mvs" command
  */
 
-export * from './authLoginRoutePost.types';
-export * from './usersRoutePost.types';
+export * from './authLogin.types';
+export * from './users.types';

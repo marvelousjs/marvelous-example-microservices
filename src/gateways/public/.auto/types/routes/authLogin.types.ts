@@ -8,19 +8,10 @@ export interface IAuthLoginRoutePostHandler {
 }
 
 export interface IAuthLoginRoutePostRequest {
-  body: IAuthLoginRoutePostRequestBody;
   session: any;
 }
 
 export interface IAuthLoginRoutePostResponse {
-  body: IAuthLoginRoutePostResponseBody;
-}
-
-export interface IAuthLoginRoutePostRequestBody {
-  email: string;
-  password: string;
-}
-
-export interface IAuthLoginRoutePostResponseBody {
+  statusCode: number;
 }
 

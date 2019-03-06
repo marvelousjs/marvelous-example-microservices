@@ -5,19 +5,9 @@
 
 import Foundation
 
-struct AuthLoginRoutePostRequest: Codable {
-    var email: String
-    var password: String
+struct UsersMethods: Codable {
 }
-struct AuthLoginRoutePostResponse: Codable {
-}
-
-struct UsersRoutePostRequest: Codable {
-    var email: String
-    var password: String
-}
-struct UsersRoutePostResponse: Codable {
-    var id: String
+struct UsersUri: Codable {
 }
 
 func handler(_ functionName: String, req: GetWeatherRequest) {
@@ -62,10 +52,7 @@ func handler(_ functionName: String, req: GetWeatherRequest) {
 }
 
 class Client: NSObject {
-    func authLoginRoutePost(_ req: AuthLoginRoutePostRequest) {
-        return handler("authLoginRoutePost", req: req)
-    }
-    func usersRoutePost(_ req: UsersRoutePostRequest) {
-        return handler("usersRoutePost", req: req)
+    func users(_ req: UsersRequest) {
+        return handler("users", req: req)
     }
 }

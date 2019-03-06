@@ -21,7 +21,7 @@ export class UsersRoutePost extends GatewayMethod {
     });
 
     return {
-      status: 201,
+      statusCode: 201,
       body: {
         id: result.id
       }

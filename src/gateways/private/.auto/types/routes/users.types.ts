@@ -13,12 +13,12 @@ export interface IUsersRoutePostRequest {
 }
 
 export interface IUsersRoutePostResponse {
+  statusCode: number;
   body: IUsersRoutePostResponseBody;
 }
 
 export interface IUsersRoutePostRequestBody {
-  email: string;
-  password: string;
+  name: string;
 }
 
 export interface IUsersRoutePostResponseBody {

@@ -11,6 +11,8 @@ export class UsersRoutePost extends GatewayMethod {
       email: req.body.email,
       password: req.body.password
     });
-    return {};
+    return {
+      statusCode: 201
+    };
   };
 }
