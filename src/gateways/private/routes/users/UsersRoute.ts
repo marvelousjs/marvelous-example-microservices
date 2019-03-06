@@ -1,6 +1,6 @@
 import { GatewayRoute } from 'marvelous';
 
-import { UsersRoutePost } from './post/UsersRoutePost';
+import { UsersRoutePost } from './post/PostUsersMethod';
 
 export class UsersRoute extends GatewayRoute {
   uri = '/users';

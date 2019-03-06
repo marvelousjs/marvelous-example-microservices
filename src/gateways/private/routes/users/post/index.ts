@@ -1,2 +1,2 @@
-export * from './UsersRoutePost';
-export * from './UsersRoutePost.schema';
+export * from './PostUsersMethod';
+export * from './PostUsersMethod.schema';
