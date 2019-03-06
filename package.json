@@ -4,7 +4,7 @@
   "description": "example using the marvelous framework",
   "dependencies": {
     "axios": "^0.18.0",
-    "marvelous": "^0.6.0"
+    "marvelous": "^0.6.4"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",

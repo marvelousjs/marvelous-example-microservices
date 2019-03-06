@@ -1,4 +1,4 @@
-import { Gateway } from 'marvelous';
+import { Gateway, ValidationGatewayError } from 'marvelous';
 
 import { AuthError } from './errors';
 
@@ -6,7 +6,8 @@ import { AuthLoginRoute, UsersRoute } from './routes';
 
 export class PublicGateway extends Gateway {
   knownErrors = [
-    AuthError
+    AuthError,
+    ValidationGatewayError
   ];
   routes = [
     AuthLoginRoute,
