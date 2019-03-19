@@ -3,13 +3,15 @@ import { IModel, Model, AttributeTypes as Types } from 'jazzdb';
 export interface IUserModel extends IModel {
   email: string;
   password: string;
+  verifiedAt?: string;
 }
 
 export class UserModel extends Model {
   name = 'users';
   attributes = {
     email: { required: true, type: Types.String },
-    password: { required: true, type: Types.String }
+    password: { required: true, type: Types.String },
+    verifiedAt: { type: Types.String }
   };
 
   async load(): Promise<UserModel> {

@@ -1,10 +1,10 @@
 {
   "name": "marvelous-example-microservices",
-  "version": "0.6.7",
+  "version": "0.8.1",
   "description": "microservices example using the marvelous framework",
   "dependencies": {
     "axios": "^0.18.0",
-    "marvelous": "^0.6.7"
+    "marvelous": "^0.8.1"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",
