@@ -18,7 +18,8 @@ export interface IUsersRoutePostResponse {
 }
 
 export interface IUsersRoutePostRequestBody {
-  name: string;
+  email: string;
+  password: string;
 }
 
 export interface IUsersRoutePostResponseBody {

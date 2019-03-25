@@ -12,27 +12,29 @@ interface IPrivateGatewayClientOpts {
 
 interface IPrivateGatewayClient {
   '/users': {
-    post: IPrivateGatewayClientPostFunction;
+    post: IPrivateGatewayClientUsersPostFunction;
   };
 }
 
-export interface IPrivateGatewayClientPostFunction {
-  (request?: IPrivateGatewayClientPostRequest): Promise<IPrivateGatewayClientPostResponse>;
+export interface IPrivateGatewayClientUsersPostFunction {
+  (request?: IPrivateGatewayClientUsersPostRequest): Promise<IPrivateGatewayClientUsersPostResponse>;
 }
 
-export interface IPrivateGatewayClientPostRequest {
-  body: IPrivateGatewayClientPostRequestBody;
+export interface IPrivateGatewayClientUsersPostRequest {
+  body: IPrivateGatewayClientUsersPostRequestBody;
 }
 
-export interface IPrivateGatewayClientPostResponse {
-  body: IPrivateGatewayClientPostResponseBody;
+export interface IPrivateGatewayClientUsersPostResponse {
+  statusCode: number;
+  body: IPrivateGatewayClientUsersPostResponseBody;
 }
 
-export interface IPrivateGatewayClientPostRequestBody {
-  name: string;
+export interface IPrivateGatewayClientUsersPostRequestBody {
+  email: string;
+  password: string;
 }
 
-export interface IPrivateGatewayClientPostResponseBody {
+export interface IPrivateGatewayClientUsersPostResponseBody {
   id: string;
 }
 
@@ -100,7 +102,7 @@ export class PrivateGatewayClient implements IPrivateGatewayClient {
   }
 
   '/users': {
-    post: IPrivateGatewayClientPostFunction;
+    post: IPrivateGatewayClientUsersPostFunction;
   } = {
     post: async (req) => {
       return handler(req, `${this.url}/users`, 'post');

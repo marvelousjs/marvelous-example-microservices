@@ -1,1 +1,1 @@
-export * from './userServiceClient';
+export * from './UserServiceClient';

@@ -1,1 +1,1 @@
-export * from './publicGatewayClient';
+export * from './PublicGatewayClient';

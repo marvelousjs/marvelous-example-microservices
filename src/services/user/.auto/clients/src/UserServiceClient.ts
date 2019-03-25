@@ -6,16 +6,16 @@
 import * as http from 'http';
 import * as url from 'url';
 
-interface IuserServiceClientOpts {
+interface IUserServiceClientOpts {
   url: string;
 }
 
-interface IuserServiceClient {
-  createUser: IuserServiceClientCreateUserFunction;
+interface IUserServiceClient {
+  createUser: IUserServiceClientCreateUserFunction;
 }
 
-export interface IuserServiceClientCreateUserFunction {
-  (request?: IuserServiceClientCreateUserRequest): Promise<IuserServiceClientCreateUserResponse>;
+export interface IUserServiceClientCreateUserFunction {
+  (request?: IUserServiceClientCreateUserRequest): Promise<IUserServiceClientCreateUserResponse>;
 }
 
 export interface IUserServiceClientCreateUserRequest {
@@ -72,16 +72,16 @@ async function handler(req: any = {}, urlString: string = ''): Promise<any> {
   });
 }
 
-export class userServiceClient implements IuserServiceClient {
+export class UserServiceClient implements IUserServiceClient {
   url = 'http://localhost:5000';
 
-  constructor(opts?: IuserServiceClientOpts) {
+  constructor(opts?: IUserServiceClientOpts) {
     if (opts && opts.url !== undefined) {
       this.url = opts.url;
     }
   }
 
-  createUser: IuserServiceClientCreateUserFunction = async req => {
+  createUser: IUserServiceClientCreateUserFunction = async req => {
     return handler(req, `${this.url}/createUser`);
   };
 }

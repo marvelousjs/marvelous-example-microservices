@@ -12,41 +12,43 @@ interface IPublicGatewayClientOpts {
 
 interface IPublicGatewayClient {
   '/auth/login': {
-    post: IPublicGatewayClientPostFunction;
+    post: IPublicGatewayClientAuthLoginPostFunction;
   };
   '/users': {
-    post: IPublicGatewayClientPostFunction;
+    post: IPublicGatewayClientUsersPostFunction;
   };
 }
 
-export interface IPublicGatewayClientPostFunction {
-  (request?: IPublicGatewayClientPostRequest): Promise<IPublicGatewayClientPostResponse>;
+export interface IPublicGatewayClientAuthLoginPostFunction {
+  (request?: IPublicGatewayClientAuthLoginPostRequest): Promise<IPublicGatewayClientAuthLoginPostResponse>;
 }
 
-export interface IPublicGatewayClientPostRequest {
+export interface IPublicGatewayClientAuthLoginPostRequest {
 }
 
-export interface IPublicGatewayClientPostResponse {
+export interface IPublicGatewayClientAuthLoginPostResponse {
+  statusCode: number;
 }
 
-export interface IPublicGatewayClientPostFunction {
-  (request?: IPublicGatewayClientPostRequest): Promise<IPublicGatewayClientPostResponse>;
+export interface IPublicGatewayClientUsersPostFunction {
+  (request?: IPublicGatewayClientUsersPostRequest): Promise<IPublicGatewayClientUsersPostResponse>;
 }
 
-export interface IPublicGatewayClientPostRequest {
-  body: IPublicGatewayClientPostRequestBody;
+export interface IPublicGatewayClientUsersPostRequest {
+  body: IPublicGatewayClientUsersPostRequestBody;
 }
 
-export interface IPublicGatewayClientPostResponse {
-  body: IPublicGatewayClientPostResponseBody;
+export interface IPublicGatewayClientUsersPostResponse {
+  statusCode: number;
+  body: IPublicGatewayClientUsersPostResponseBody;
 }
 
-export interface IPublicGatewayClientPostRequestBody {
+export interface IPublicGatewayClientUsersPostRequestBody {
   email: string;
   password: string;
 }
 
-export interface IPublicGatewayClientPostResponseBody {
+export interface IPublicGatewayClientUsersPostResponseBody {
   id: string;
 }
 
@@ -114,7 +116,7 @@ export class PublicGatewayClient implements IPublicGatewayClient {
   }
 
   '/auth/login': {
-    post: IPublicGatewayClientPostFunction;
+    post: IPublicGatewayClientAuthLoginPostFunction;
   } = {
     post: async (req) => {
       return handler(req, `${this.url}/auth/login`, 'post');
@@ -122,7 +124,7 @@ export class PublicGatewayClient implements IPublicGatewayClient {
   };
 
   '/users': {
-    post: IPublicGatewayClientPostFunction;
+    post: IPublicGatewayClientUsersPostFunction;
   } = {
     post: async (req) => {
       return handler(req, `${this.url}/users`, 'post');

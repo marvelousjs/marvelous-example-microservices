@@ -6,16 +6,16 @@
 import * as http from 'http';
 import * as url from 'url';
 
-interface IrepoServiceClientOpts {
+interface IRepoServiceClientOpts {
   url: string;
 }
 
-interface IrepoServiceClient {
-  createRepo: IrepoServiceClientCreateRepoFunction;
+interface IRepoServiceClient {
+  createRepo: IRepoServiceClientCreateRepoFunction;
 }
 
-export interface IrepoServiceClientCreateRepoFunction {
-  (request?: IrepoServiceClientCreateRepoRequest): Promise<IrepoServiceClientCreateRepoResponse>;
+export interface IRepoServiceClientCreateRepoFunction {
+  (request?: IRepoServiceClientCreateRepoRequest): Promise<IRepoServiceClientCreateRepoResponse>;
 }
 
 export interface IRepoServiceClientCreateRepoRequest {
@@ -71,16 +71,16 @@ async function handler(req: any = {}, urlString: string = ''): Promise<any> {
   });
 }
 
-export class repoServiceClient implements IrepoServiceClient {
+export class RepoServiceClient implements IRepoServiceClient {
   url = 'http://localhost:5000';
 
-  constructor(opts?: IrepoServiceClientOpts) {
+  constructor(opts?: IRepoServiceClientOpts) {
     if (opts && opts.url !== undefined) {
       this.url = opts.url;
     }
   }
 
-  createRepo: IrepoServiceClientCreateRepoFunction = async req => {
+  createRepo: IRepoServiceClientCreateRepoFunction = async req => {
     return handler(req, `${this.url}/createRepo`);
   };
 }

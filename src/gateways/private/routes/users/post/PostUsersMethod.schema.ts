@@ -3,7 +3,11 @@ const request = {
     type: 'object',
     additionalProperties: false,
     properties: {
-      name: {
+      email: {
+        required: true,
+        type: 'string'
+      },
+      password: {
         required: true,
         type: 'string'
       }

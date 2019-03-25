@@ -1,24 +1,35 @@
 import * as assert from 'assert';
-import axios from 'axios';
 
 import { PrivateGateway, PublicGateway } from '../gateways';
+import { PrivateGatewayClient } from '../gateways/private/.auto/clients/src';
+import { PublicGatewayClient } from '../gateways/public/.auto/clients/src';
 import { RepoService, UserService } from '../services';
+
+import { settings } from '../settings';
 
 describe('server', () => {
   // create services
-  const userService = new UserService({
-    url: 'http://localhost:3001'
-  });
   const repoService = new RepoService({
-    url: 'http://localhost:3002'
+    url: settings.services.repo.url
+  });
+  const userService = new UserService({
+    url: settings.services.user.url
   });
 
   // create gateways
   const privateGateway = new PrivateGateway({
-    url: 'http://localhost:3003'
+    url: settings.gateways.private.url
   });
   const publicGateway = new PublicGateway({
-    url: 'http://localhost:3004'
+    url: settings.gateways.public.url
+  });
+
+  // create gateway clients
+  const privateGatewayClient = new PrivateGatewayClient({
+    url: settings.gateways.private.url
+  });
+  const publicGatewayClient = new PublicGatewayClient({
+    url: settings.gateways.public.url
   });
   
   before(async () => {
@@ -32,51 +43,34 @@ describe('server', () => {
   });
 
   after(async () => {
-    // stop gateways
+    // // stop gateways
     await privateGateway.stop();
     await publicGateway.stop();
 
-    // stop services
+    // // stop services
     await repoService.stop();
     await userService.stop();
   });
 
-  it('should create user', async () => {
-    // successful login
-    const loginResult = await axios({
-      method: 'POST',
-      url: 'http://localhost:3004/auth/login',
-      data: {
+  it('should create user via public gateway', async () => {
+    const result = await publicGatewayClient['/users'].post({
+      body: {
         email: 'test@test.com',
-        password: 'password'
+        password: 'password1'
       }
     });
+    assert.strictEqual(result.statusCode, 201);
+    assert.strictEqual(typeof result.body.id, 'string');
+  });
 
-    assert.strictEqual(loginResult.status, 200);
-    assert.deepStrictEqual(loginResult.data, {});
-
-    // registration should fail since user is logged in
-    try {
-      await axios({
-        method: 'POST',
-        url: 'http://localhost:3004/users',
-        data: {
-          email: 'test@test.com',
-          password: 'password'
-        },
-        headers: {
-          cookie: loginResult.headers['set-cookie']
-        }
-      });
-
-      assert.fail('should throw error');
-
-    } catch (error) {
-      assert.strictEqual(error.response.status, 401);
-      assert.deepStrictEqual(error.response.data, {
-        name: 'AuthError',
-        message: 'Guest allowed only'
-      });
-    }
+  it('should create user via private gateway', async () => {
+    const result = await privateGatewayClient['/users'].post({
+      body: {
+        email: 'test@test.com',
+        password: 'password1'
+      }
+    });
+    assert.strictEqual(result.statusCode, 201);
+    assert.strictEqual(typeof result.body.id, 'string');
   });
 });
